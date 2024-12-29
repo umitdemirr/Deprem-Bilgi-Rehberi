@@ -1,0 +1,16 @@
+<div class="article-card">
+    <div class="article-image">
+        {{#if imageUrl}}
+            <img src="{{imageUrl}}" alt="{{title}}" class="img-fluid">
+        {{else}}
+            <div class="default-image">
+                <i class="fas {{categoryIcon category}}"></i>
+            </div>
+        {{/if}}
+    </div>
+    <div class="article-content">
+        <h3>{{title}}</h3>
+        <p>{{shortDescription}}</p>
+        <a href="/bilgi-kosesi/{{_id}}" class="btn btn-primary">Devamını Oku</a>
+    </div>
+</div> 

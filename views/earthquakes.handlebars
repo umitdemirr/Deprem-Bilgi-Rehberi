@@ -1,0 +1,567 @@
+<div class="container-fluid mt-4">
+    <!-- İstatistik Kartları -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="stat-card bg-gradient-primary">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-content">
+                    <h5>Son 24 Saat</h5>
+                    <h2>{{stats.last24Hours}}</h2>
+                    <p>deprem kaydı</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card bg-gradient-danger">
+                <div class="stat-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="stat-content">
+                    <h5>En Büyük Deprem</h5>
+                    <h2>{{stats.maxMagnitude}}</h2>
+                    <p>büyüklüğünde</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card bg-gradient-success">
+                <div class="stat-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="stat-content">
+                    <h5>En Aktif Bölge</h5>
+                    <h2>{{stats.mostActiveCity}}</h2>
+                    <p>son 24 saatte</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card bg-gradient-info">
+                <div class="stat-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="stat-content">
+                    <h5>Toplam Kayıt</h5>
+                    <h2>{{stats.totalCount}}</h2>
+                    <p>deprem verisi</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ana İçerik -->
+    <div class="row">
+        <!-- Harita Bölümü -->
+        <div class="col-md-8">
+            <div class="content-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5><i class="fas fa-map-marked-alt me-2"></i>Deprem Haritası</h5>
+                    <div class="map-controls">
+                        <button class="btn btn-sm btn-outline-primary" onclick="centerMap()">
+                            <i class="fas fa-crosshairs"></i> Merkeze Al
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="toggleMapFullscreen()">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div id="mainMap" class="map-container" style="height: 600px; width: 100%; position: relative; z-index: 1;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filtreler ve Liste -->
+        <div class="col-md-4">
+            <!-- Filtreler -->
+            <div class="content-card mb-3">
+                <div class="card-header">
+                    <h5><i class="fas fa-filter me-2"></i>Filtreler</h5>
+                </div>
+                <div class="card-body">
+                    <form id="filterForm" action="/son-depremler" method="GET">
+                        <div class="filter-group">
+                            <label><i class="fas fa-ruler me-2"></i>Minimum Büyüklük</label>
+                            <div class="magnitude-slider mb-3">
+                                <input type="range" 
+                                       class="form-range" 
+                                       name="magnitude" 
+                                       min="0" 
+                                       max="7" 
+                                       step="0.1" 
+                                       value="{{filters.magnitude}}"
+                                       oninput="this.nextElementSibling.textContent = this.value">
+                                <span class="magnitude-value">{{filters.magnitude}}</span>
+                            </div>
+                        </div>
+                        <div class="filter-group">
+                            <label><i class="fas fa-city me-2"></i>Şehir</label>
+                            <div class="search-box">
+                                <input type="text" 
+                                       name="city" 
+                                       class="form-control" 
+                                       value="{{filters.city}}" 
+                                       placeholder="Şehir ara..."
+                                       autocomplete="off">
+                                <div id="citySuggestions" class="suggestions-box"></div>
+                            </div>
+                        </div>
+                        <div class="filter-group">
+                            <label><i class="far fa-clock me-2"></i>Zaman Aralığı</label>
+                            <select name="date" class="form-select">
+                                <option value="">Tümü</option>
+                                <option value="1h" {{#if (eq filters.date '1h')}}selected{{/if}}>Son 1 Saat</option>
+                                <option value="6h" {{#if (eq filters.date '6h')}}selected{{/if}}>Son 6 Saat</option>
+                                <option value="24h" {{#if (eq filters.date '24h')}}selected{{/if}}>Son 24 Saat</option>
+                                <option value="week" {{#if (eq filters.date 'week')}}selected{{/if}}>Son 1 Hafta</option>
+                            </select>
+                        </div>
+                        <div class="filter-buttons">
+                            <button type="submit" class="btn btn-primary w-100 mb-2">
+                                <i class="fas fa-search me-2"></i>Filtrele
+                            </button>
+                            <button type="button" onclick="clearAllFilters()" class="btn btn-outline-secondary w-100">
+                                <i class="fas fa-times me-2"></i>Temizle
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Deprem Listesi -->
+            <div class="content-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5><i class="fas fa-list me-2"></i>Son Depremler</h5>
+                    <span class="badge bg-primary">{{earthquakes.length}} kayıt</span>
+                </div>
+                <div class="earthquake-list">
+                    {{#each earthquakes}}
+                    <div class="earthquake-item" onclick="focusEarthquake({{this.lat}}, {{this.lng}})">
+                        <div class="magnitude-badge" data-magnitude="{{this.magnitude}}">
+                            {{this.magnitude}}
+                        </div>
+                        <div class="earthquake-details">
+                            <div class="location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                {{this.location}}
+                            </div>
+                            <div class="info-row">
+                                <span><i class="fas fa-arrows-alt-v"></i> {{this.depth}} km</span>
+                                <span><i class="far fa-clock"></i> {{formatDate this.date}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Gradient Arka Planlar */
+.bg-gradient-primary {
+    background: linear-gradient(45deg, #4e73df, #224abe);
+}
+.bg-gradient-danger {
+    background: linear-gradient(45deg, #e74a3b, #be2617);
+}
+.bg-gradient-success {
+    background: linear-gradient(45deg, #1cc88a, #13855c);
+}
+.bg-gradient-info {
+    background: linear-gradient(45deg, #36b9cc, #258391);
+}
+
+/* İstatistik Kartları */
+.stat-card {
+    padding: 1.5rem;
+    border-radius: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    margin-right: 1rem;
+    opacity: 0.8;
+}
+
+.stat-content h2 {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+}
+
+/* İçerik Kartları */
+.content-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+.card-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #eee;
+    background: transparent;
+}
+
+/* Harita */
+.map-container {
+    height: 600px;
+    border-radius: 0 0 15px 15px;
+}
+
+/* Deprem Listesi */
+.earthquake-list {
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 0.5rem;
+}
+
+.earthquake-item {
+    display: flex;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    background: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.earthquake-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.magnitude-badge {
+    min-width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    color: white;
+}
+
+[data-magnitude^="1"], [data-magnitude^="2"] { background: #28a745; }
+[data-magnitude^="3"], [data-magnitude^="4"] { background: #ffc107; }
+[data-magnitude^="5"] { background: #fd7e14; }
+[data-magnitude^="6"], [data-magnitude^="7"] { background: #dc3545; }
+
+.info-row {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Filtreler */
+.filter-group {
+    margin-bottom: 1rem;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+.search-box {
+    position: relative;
+}
+
+.suggestions-box {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+/* Scrollbar Stilleri */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Başlık için karanlık tema uyumluluğu */
+.section-title {
+    color: var(--text);
+}
+
+/* Liste için karanlık tema uyumluluğu */
+.earthquake-list {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+}
+
+.earthquake-item {
+    border-bottom: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text);
+}
+
+.earthquake-item:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+[data-theme="dark"] .earthquake-item:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+.earthquake-item .location {
+    color: var(--text);
+}
+
+.earthquake-item .time {
+    color: var(--text);
+    opacity: 0.7;
+}
+
+/* Harita başlığı için karanlık tema uyumluluğu */
+.map-title {
+    color: var(--text);
+}
+
+/* Filtre bölümü için karanlık tema uyumluluğu */
+.filter-section {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+}
+
+.filter-section label {
+    color: var(--text);
+}
+
+/* Magnitude renk göstergeleri için karanlık tema uyumluluğu */
+.magnitude-legend {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+}
+
+.magnitude-legend .legend-title {
+    color: var(--text);
+}
+
+.magnitude-legend .legend-item {
+    color: var(--text);
+}
+
+/* Kart stil güncellemeleri */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+}
+
+.card-title {
+    color: var(--text);
+}
+
+.card-text {
+    color: var(--text);
+}
+
+/* Tablo stil güncellemeleri */
+.table {
+    color: var(--text);
+}
+
+[data-theme="dark"] .table {
+    --bs-table-bg: var(--card-bg);
+    --bs-table-color: var(--text);
+    --bs-table-border-color: var(--border);
+}
+
+[data-theme="dark"] .table tbody tr:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+/* Content Card Karanlık Tema */
+[data-theme="dark"] .content-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .card-header {
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+}
+
+[data-theme="dark"] .card-header h5 {
+    color: var(--text);
+}
+
+/* Filtreler Karanlık Tema */
+[data-theme="dark"] .filter-group label {
+    color: var(--text);
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+    background-color: var(--card-bg);
+    border-color: var(--primary);
+    color: var(--text);
+}
+
+[data-theme="dark"] .form-control::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+/* Şehir Önerileri Kutusu */
+[data-theme="dark"] .suggestions-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .suggestions-box div {
+    color: var(--text);
+}
+
+[data-theme="dark"] .suggestions-box div:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Info Row Renk Düzeltmesi */
+[data-theme="dark"] .info-row {
+    color: var(--text);
+    opacity: 0.8;
+}
+
+/* Scrollbar Karanlık Tema */
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+/* Range Input Karanlık Tema */
+[data-theme="dark"] .form-range::-webkit-slider-runnable-track {
+    background-color: rgba(255,255,255,0.2);
+}
+
+[data-theme="dark"] .form-range::-webkit-slider-thumb {
+    background-color: var(--primary);
+}
+
+/* Magnitude Değeri */
+[data-theme="dark"] .magnitude-value {
+    color: var(--text);
+}
+
+/* Buton Hover Efektleri */
+[data-theme="dark"] .btn-outline-secondary:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+/* Badge Renk Düzeltmesi */
+[data-theme="dark"] .badge.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+/* Map Controls */
+[data-theme="dark"] .map-controls .btn {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+[data-theme="dark"] .map-controls .btn:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* İstatistik Kartları Gölge Düzeltmesi */
+[data-theme="dark"] .stat-card {
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+/* Content Card Gölge Düzeltmesi */
+[data-theme="dark"] .content-card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Form Elementleri Disabled Durumu */
+[data-theme="dark"] .form-control:disabled,
+[data-theme="dark"] .form-select:disabled {
+    background-color: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.5);
+}
+</style>
+
+<script>
+// Harita kontrolleri için fonksiyonlar
+function centerMap() {
+    if (map) {
+        map.setView([39.9334, 32.8597], 6);
+    }
+}
+
+function toggleMapFullscreen() {
+    const mapContainer = document.getElementById('mainMap');
+    if (!document.fullscreenElement) {
+        mapContainer.requestFullscreen();
+    } else {
+        document.exitFullscreen();
+    }
+}
+
+function focusEarthquake(lat, lng) {
+    if (map) {
+        map.setView([lat, lng], 8);
+    }
+}
+
+// Magnitude slider için değer gösterimi
+document.querySelector('input[type="range"]').addEventListener('input', function(e) {
+    document.querySelector('.magnitude-value').textContent = e.target.value;
+});
+
+// Deprem verilerini global değişkene aktar
+const earthquakes = {{{json earthquakes}}};
+
+// Debug için
+console.log('Deprem verileri yüklendi:', earthquakes);
+</script> 

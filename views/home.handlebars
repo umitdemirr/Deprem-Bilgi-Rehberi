@@ -1,0 +1,1403 @@
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container">
+        <div class="hero-content text-center">
+            <h1 class="hero-title display-3 fw-bold mb-4" data-aos="fade-up">
+                Depreme Hazır Ol
+            </h1>
+            <p class="hero-subtitle fs-4 mb-5" data-aos="fade-up" data-aos-delay="200">
+                Deprem öncesi, sırası ve sonrasında yapılması gerekenler hakkında bilgi edinin
+            </p>
+            <div class="hero-buttons d-flex justify-content-center gap-3" data-aos="fade-up" data-aos-delay="400">
+                <a href="/bilgi-kosesi" class="btn btn-primary btn-lg pulse-button">
+                    <i class="fas fa-info-circle me-2"></i>
+                    Bilgi Al
+                </a>
+                <a href="#quick-actions" class="btn btn-outline-light btn-lg hover-button">
+                    <i class="fas fa-bolt me-2"></i>
+                    Hızlı Erişim
+                </a>
+            </div>
+        </div>
+        <!-- Scroll indicator'ı sadece masaüstünde göster -->
+        <div class="scroll-indicator d-none d-md-block" data-aos="fade" data-aos-delay="800">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <p class="mt-2">Aşağı Kaydır</p>
+        </div>
+    </div>
+</div>
+
+<!-- Hızlı Erişim Kartları -->
+<section id="quick-actions" class="py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-5" data-aos="fade-up">
+            <i class="fas fa-bolt me-2"></i>
+            Hızlı Erişim
+        </h2>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="quick-card emergency">
+                    <div class="quick-card-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Acil Numaralar</h3>
+                    <p>Acil durum numaralarına hızlı erişim</p>
+                    <a href="/info#contacts" class="btn btn-danger" onclick="event.preventDefault(); showContactModal();">
+                        <i class="fas fa-phone me-2"></i>
+                        Numaraları Göster
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="quick-card location">
+                    <div class="quick-card-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Güvenli Bölgeler</h3>
+                    <p>Size en yakın toplanma alanını bulun</p>
+                    <button class="btn btn-success" onclick="openSafeZonesModal()">
+                        <i class="fas fa-map-marked-alt me-2"></i>
+                        Güvenli Bölgeler
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="quick-card documents">
+                    <div class="quick-card-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Dökümanlar</h3>
+                    <p>Önemli rehber ve dökümanlar</p>
+                    <a href="/info#documents" class="btn btn-primary" onclick="event.preventDefault(); showPdfModal();">
+                        <i class="fas fa-download me-2"></i>
+                        Dökümanları Aç
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- İstatistikler ve SSS başlıkları için güncelleme -->
+<h2 class="section-title text-center mb-5" data-aos="fade-up" style="color: var(--text)">
+    <i class="fas fa-chart-bar me-2"></i>
+    İstatistikler
+</h2>
+
+<!-- İstatistikler Bölümü -->
+<section class="stats-section py-5 bg-light">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-3" data-aos="fade-up">
+                <div class="stat-card text-center">
+                    <div class="stat-icon mb-3">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="stat-number">2831</h3>
+                    <p class="stat-label">Toplanma Alanı</p>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-card text-center">
+                    <div class="stat-icon mb-3">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="stat-number">112</h3>
+                    <p class="stat-label">Acil Toplanma Merkezi</p>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-card text-center">
+                    <div class="stat-icon mb-3">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="stat-number">12</h3>
+                    <p class="stat-label">Rehber ve Döküman</p>
+                </div>
+            </div>
+            <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-card text-center">
+                    <div class="stat-icon mb-3">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="stat-number">8</h3>
+                    <p class="stat-label">Eğitim Videosu</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Deprem Hazırlık Kontrol Listesi -->
+<section class="checklist-section py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-5" data-aos="fade-up" style="color: var(--text)">
+            <i class="fas fa-clipboard-check me-2"></i>
+            Deprem Hazırlık Kontrol Listesi
+        </h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="checklist-card">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <div class="progress-bar-container">
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                            </div>
+                            <small class="progress-text mt-2">0% Tamamlandı</small>
+                        </div>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="resetChecklist()">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="checklist-items">
+                        <div class="row g-3">
+                            <!-- Temel İhtiyaçlar -->
+                            <div class="col-12">
+                                <div class="checklist-category">
+                                    <h5><i class="fas fa-box me-2"></i>Temel İhtiyaçlar</h5>
+                                    <div class="row g-3 mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input main-check" type="checkbox" id="check1" onchange="updateMainCheckbox(this)">
+                                                <label class="form-check-label" for="check1">
+                                                    Deprem Çantası
+                                                    <small class="d-block text-muted">
+                                                        <ul class="sub-checklist">
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub1-1" data-parent="check1" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub1-1">Su (kişi başı 4lt)</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub1-2" data-parent="check1" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub1-2">Konserve gıdalar</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>El feneri ve pil</li>
+                                                            <li>Powerbank</li>
+                                                            <li>Düdük</li>
+                                                        </ul>
+                                                    </small>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input main-check" type="checkbox" id="check2" data-parent="check2" onchange="updateMainCheckbox(this)">
+                                                <label class="form-check-label" for="check2">
+                                                    İlk Yardım Çantası
+                                                    <small class="d-block text-muted">
+                                                        <ul class="sub-checklist">
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub2-1" data-parent="check2" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub2-1">Bandaj ve sargı bezi</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub2-2" data-parent="check2" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub2-2">Antiseptik</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub2-3" data-parent="check2" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub2-3">Ağrı kesici</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub2-4" data-parent="check2" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub2-4">Kişisel ilaçlar</label>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </small>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ev Güvenliği -->
+                            <div class="col-12">
+                                <div class="checklist-category">
+                                    <h5><i class="fas fa-home me-2"></i>Ev Güvenliği</h5>
+                                    <div class="row g-3 mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input main-check" type="checkbox" id="check3" data-parent="check3" onchange="updateMainCheckbox(this)">
+                                                <label class="form-check-label" for="check3">
+                                                    Mobilya Sabitlemesi
+                                                    <small class="d-block text-muted">
+                                                        <ul class="sub-checklist">
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub3-1" data-parent="check3" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub3-1">Dolap ve kitaplıklar</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub3-2" data-parent="check3" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub3-2">TV ve elektronik eşyalar</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub3-3" data-parent="check3" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub3-3">Tablolar ve aynalar</label>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </small>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input main-check" type="checkbox" id="check4" data-parent="check4" onchange="updateMainCheckbox(this)">
+                                                <label class="form-check-label" for="check4">
+                                                    Tesisat Kontrolü
+                                                    <small class="d-block text-muted">
+                                                        <ul class="sub-checklist">
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub4-1" data-parent="check4" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub4-1">Gaz vanası yeri</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub4-2" data-parent="check4" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub4-2">Su vanası yeri</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub4-3" data-parent="check4" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub4-3">Elektrik panosu yeri</label>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </small>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Aile Planı -->
+                            <div class="col-12">
+                                <div class="checklist-category">
+                                    <h5><i class="fas fa-users me-2"></i>Aile Planı</h5>
+                                    <div class="row g-3 mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input main-check" type="checkbox" id="check5" data-parent="check5" onchange="updateMainCheckbox(this)">
+                                                <label class="form-check-label" for="check5">
+                                                    İletişim Planı
+                                                    <small class="d-block text-muted">
+                                                        <ul class="sub-checklist">
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub5-1" data-parent="check5" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub5-1">Aile buluşma noktası</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub5-2" data-parent="check5" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub5-2">Acil durum telefon listesi</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub5-3" data-parent="check5" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub5-3">Şehir dışı irtibat kişisi</label>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </small>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input main-check" type="checkbox" id="check6" data-parent="check6" onchange="updateMainCheckbox(this)">
+                                                <label class="form-check-label" for="check6">
+                                                    Önemli Evraklar
+                                                    <small class="d-block text-muted">
+                                                        <ul class="sub-checklist">
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub6-1" data-parent="check6" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub6-1">Kimlik fotokopileri</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub6-2" data-parent="check6" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub6-2">Sigorta belgeleri</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub6-3" data-parent="check6" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub6-3">Tapu ve sözleşmeler</label>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </small>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Eğitim ve Bilgi -->
+                            <div class="col-12">
+                                <div class="checklist-category">
+                                    <h5><i class="fas fa-graduation-cap me-2"></i>Eğitim ve Bilgi</h5>
+                                    <div class="row g-3 mt-2">
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input main-check" type="checkbox" id="check7" data-parent="check7" onchange="updateMainCheckbox(this)">
+                                                <label class="form-check-label" for="check7">
+                                                    Deprem Eğitimi
+                                                    <small class="d-block text-muted">
+                                                        <ul class="sub-checklist">
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub7-1" data-parent="check7" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub7-1">Çök-Kapan-Tutun</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub7-2" data-parent="check7" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub7-2">Tahliye yolları</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub7-3" data-parent="check7" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub7-3">İlk yardım bilgisi</label>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </small>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input main-check" type="checkbox" id="check8" data-parent="check8" onchange="updateMainCheckbox(this)">
+                                                <label class="form-check-label" for="check8">
+                                                    Bölge Bilgisi
+                                                    <small class="d-block text-muted">
+                                                        <ul class="sub-checklist">
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub8-1" data-parent="check8" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub8-1">Toplanma alanları</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub8-2" data-parent="check8" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub8-2">Hastane yerleri</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input sub-check" type="checkbox" id="sub8-3" data-parent="check8" onchange="updateProgress()">
+                                                                    <label class="form-check-label" for="sub8-3">İtfaiye istasyonları</label>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </small>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sık Sorulan Sorular -->
+<section class="faq-section py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title text-center mb-5" data-aos="fade-up">
+            <i class="fas fa-question-circle me-2"></i>
+            Sık Sorulan Sorular
+        </h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="faqAccordion">
+                    <!-- Soru 1 -->
+                    <div class="accordion-item" data-aos="fade-up">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                Deprem çantasında neler olmalı?
+                            </button>
+                        </h3>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <ul class="faq-list">
+                                    <li>Su (kişi başı günlük 4 litre)</li>
+                                    <li>Uzun ömürlü gıdalar (konserve, kuru gıda)</li>
+                                    <li>İlk yardım malzemeleri ve kişisel ilaçlar</li>
+                                    <li>El feneri ve yedek piller</li>
+                                    <li>Powerbank ve şarj kabloları</li>
+                                    <li>Önemli evrakların kopyaları (su geçirmez poşette)</li>
+                                    <li>Battaniye ve uyku tulumu</li>
+                                    <li>Hijyen malzemeleri</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Soru 2 -->
+                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                Deprem anında ne yapmalıyım?
+                            </button>
+                        </h3>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>Deprem anında "Çök-Kapan-Tutun" hareketini uygulayın:</p>
+                                <ul class="faq-list">
+                                    <li>Sağlam bir masanın altına çökün</li>
+                                    <li>Başınızı ve boynunuzu koruyun</li>
+                                    <li>Sarsıntı bitene kadar tutunun</li>
+                                    <li>Pencere ve dış duvarlardan uzak durun</li>
+                                    <li>Merdiven ve asansör kullanmayın</li>
+                                    <li>Panik yapmadan sakin kalın</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Soru 3 -->
+                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                Deprem sonrası neler yapmalıyım?
+                            </button>
+                        </h3>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <ul class="faq-list">
+                                    <li>Sakin olun ve etrafınızı kontrol edin</li>
+                                    <li>Yangın ve gaz kaçağı kontrolü yapın</li>
+                                    <li>Acil durum çantanızı alın</li>
+                                    <li>En yakın toplanma alanına gidin</li>
+                                    <li>Resmi bilgilendirmeleri takip edin</li>
+                                    <li>Gereksiz telefon kullanımından kaçının</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soru 4 -->
+                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                Artçı depremler ne kadar sürer?
+                            </button>
+                        </h3>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>Artçı depremlerin süresi ve şiddeti ana depremin büyüklüğüne bağlıdır:</p>
+                                <ul class="faq-list">
+                                    <li>Günler, haftalar hatta aylar sürebilir</li>
+                                    <li>Ana deprem kadar şiddetli olabilir</li>
+                                    <li>İlk 24 saat çok dikkatli olunmalı</li>
+                                    <li>Hasarlı binalara girilmemeli</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soru 5 -->
+                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                DASK sigortası neden önemli?
+                            </button>
+                        </h3>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <ul class="faq-list">
+                                    <li>Deprem hasarlarını karşılar</li>
+                                    <li>Yasal bir zorunluluktur</li>
+                                    <li>Uygun primlerle yüksek teminat sağlar</li>
+                                    <li>Evinizin yeniden inşasını garanti eder</li>
+                                    <li>Devlet desteği için gereklidir</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soru 6 -->
+                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="500">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                Toplanma alanında neler yapmalıyım?
+                            </button>
+                        </h3>
+                        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <ul class="faq-list">
+                                    <li>Yetkililerin yönlendirmelerini takip edin</li>
+                                    <li>Ailenizle iletişim kurun</li>
+                                    <li>Yardıma ihtiyacı olanlara destek olun</li>
+                                    <li>Sosyal medyadan yanlış bilgi yaymayın</li>
+                                    <li>İhtiyaçlarınızı yetkililere bildirin</li>
+                                </ul>
+                                <a href="/safe-zones" class="btn btn-sm btn-outline-primary mt-3">
+                                    <i class="fas fa-map-marker-alt me-2"></i>
+                                    Toplanma Alanlarını Görüntüle
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Güvenli Bölgeler Modal -->
+<div class="modal fade" id="safeZonesModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="fas fa-map-marked-alt me-2"></i>
+                    Güvenli Bölgeler
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Filtreler -->
+                <div class="filters mb-4">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><i class="fas fa-city me-2"></i>Şehir</label>
+                                <select class="form-select" id="cityFilter">
+                                    <option value="">Tüm Şehirler</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><i class="fas fa-map me-2"></i>İlçe</label>
+                                <select class="form-select" id="districtFilter">
+                                    <option value="">Tüm İlçeler</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Güvenli Bölge Kartları -->
+                <div class="safe-zones-grid">
+                    <div class="row g-4" id="safeZonesContainer">
+                        <!-- Kartlar buraya dinamik olarak eklenecek -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS Güncellemeleri -->
+<style>
+/* Scroll indicator'ı gizle/göster */
+.scroll-indicator {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-indicator.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* İstatistik Kartları */
+.stat-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Kontrol Listesi Stilleri */
+.checklist-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.progress-bar-container {
+    flex: 1;
+    margin-right: 1rem;
+}
+
+.progress {
+    background-color: var(--border);
+}
+
+.progress-bar {
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    color: var(--text);
+    opacity: 0.8;
+}
+
+.form-check {
+    background: rgba(0,0,0,0.02);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0;
+    transition: all 0.3s ease;
+}
+
+.form-check:hover {
+    background: rgba(0,0,0,0.04);
+}
+
+[data-theme="dark"] .form-check {
+    background: rgba(255,255,255,0.02);
+}
+
+[data-theme="dark"] .form-check:hover {
+    background: rgba(255,255,255,0.04);
+}
+
+.form-check-label {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.form-check-label small {
+    font-weight: normal;
+    opacity: 0.7;
+}
+
+/* SSS Stilleri */
+.accordion-item {
+    border: none;
+    margin-bottom: 1rem;
+    border-radius: 10px !important;
+    overflow: hidden;
+    background: var(--card-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.accordion-button {
+    background: var(--card-bg);
+    color: var(--text);
+    border: none;
+    font-weight: 600;
+    padding: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) {
+    background: var(--primary);
+    color: white;
+    box-shadow: none;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.accordion-body {
+    background: var(--card-bg);
+    color: var(--text);
+    padding: 1.5rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.faq-list {
+    padding-left: 1.5rem;
+    margin-bottom: 0;
+    color: var(--text);
+}
+
+.faq-list li {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+    position: relative;
+}
+
+.faq-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Dark mode uyumluluğu */
+[data-theme="dark"] .accordion-item {
+    border-color: var(--border);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .accordion-button:not(.collapsed) {
+    color: white;
+}
+
+[data-theme="dark"] .accordion-body {
+    border-top-color: var(--border);
+}
+
+[data-theme="dark"] .accordion-button::after {
+    filter: invert(1);
+}
+
+/* Kontrol Listesi İyileştirmeleri */
+.checklist-category {
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.02);
+}
+
+[data-theme="dark"] .checklist-category {
+    background: rgba(255,255,255,0.02);
+}
+
+.category-title {
+    font-size: 1.1rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.form-check-label small {
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+}
+
+.progress-label {
+    font-size: 0.9rem;
+    color: var(--text);
+    opacity: 0.8;
+}
+
+/* Progress Ring Animasyonu */
+@property --progress {
+    syntax: '<number>';
+    inherits: false;
+    initial-value: 0;
+}
+
+.progress-ring::before {
+    --progress: 0;
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 8px solid var(--primary);
+    border-radius: 50%;
+    animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+    from { --progress: 0 }
+    to { --progress: var(--target-progress) }
+}
+
+/* Minimal SSS Stilleri */
+.faq-minimal {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.5rem;
+}
+
+.faq-question {
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: var(--text);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.faq-question i {
+    margin-right: 1rem;
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.faq-question.active i {
+    transform: rotate(90deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 1rem;
+}
+
+.faq-answer.show {
+    max-height: 500px;
+    padding-bottom: 1rem;
+}
+
+.answer-content {
+    color: var(--text);
+    opacity: 0.8;
+}
+
+/* Minimal Kontrol Listesi Stilleri */
+.progress-container {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary);
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    position: absolute;
+    right: 0;
+    top: -25px;
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+/* Dark mode uyumluluğu */
+[data-theme="dark"] .section-title,
+[data-theme="dark"] .faq-question,
+[data-theme="dark"] .answer-content {
+    color: var(--text);
+}
+
+/* Kontrol Listesi Güncellemesi */
+.checklist-category {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+}
+
+.checklist-category h5 {
+    color: var(--text);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.sub-checklist {
+    list-style: none;
+    padding-left: 1.5rem;
+    margin: 0.5rem 0 0 0;
+}
+
+.sub-checklist .form-check {
+    margin: 0.25rem 0;
+}
+
+.sub-checklist .form-check-input {
+    margin-top: 0.25rem;
+}
+
+.sub-checklist .form-check-label {
+    font-size: 0.85rem;
+    color: var(--text);
+}
+
+[data-theme="dark"] .sub-checklist .form-check-label {
+    color: rgba(255,255,255,0.8);
+}
+
+/* SSS Karanlık Tema Düzeltmeleri */
+[data-theme="dark"] .accordion-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .accordion-button {
+    background: var(--card-bg);
+    color: var(--text);
+}
+
+[data-theme="dark"] .accordion-button:not(.collapsed) {
+    background: var(--primary);
+    color: white;
+}
+
+[data-theme="dark"] .accordion-button::after {
+    filter: invert(1);
+}
+
+[data-theme="dark"] .accordion-button:not(.collapsed)::after {
+    filter: invert(0);
+}
+
+[data-theme="dark"] .faq-list {
+    color: var(--text);
+}
+
+[data-theme="dark"] .text-muted {
+    color: rgba(255,255,255,0.6) !important;
+}
+
+/* Başlıklar için karanlık tema düzeltmesi */
+.section-title {
+    color: var(--text);
+}
+
+[data-theme="dark"] .section-title {
+    color: var(--text);
+}
+
+/* Arka plan rengi düzeltmesi */
+[data-theme="dark"] .bg-light {
+    background-color: var(--background) !important;
+}
+
+/* Modal Stilleri */
+.modal-content {
+    background: var(--card-bg);
+    color: var(--text);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border);
+}
+
+.modal-header .btn-close {
+    filter: var(--btn-close-filter);
+}
+
+/* Filtre Stilleri */
+.filters label {
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Kart Stilleri */
+.safe-zone-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    height: 100%;
+    transition: transform 0.2s;
+}
+
+.safe-zone-card:hover {
+    transform: translateY(-5px);
+}
+
+.safe-zone-card h5 {
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+.safe-zone-info {
+    color: var(--text);
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+}
+
+.safe-zone-info i {
+    width: 20px;
+    text-align: center;
+    margin-right: 0.5rem;
+}
+
+/* Karanlık Tema Uyumluluğu */
+[data-theme="dark"] .modal-content {
+    background: var(--card-bg);
+}
+
+[data-theme="dark"] .form-select {
+    background-color: var(--card-bg);
+    color: var(--text);
+    border-color: var(--border);
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // AOS'u başlat
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+    
+    // Scroll indicator'ı kontrol et
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            scrollIndicator.classList.add('hidden');
+        } else {
+            scrollIndicator.classList.remove('hidden');
+        }
+    });
+});
+
+// Sayaç animasyonu
+const counters = document.querySelectorAll('.counter');
+const speed = 200;
+
+counters.forEach(counter => {
+    const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const inc = target / speed;
+
+        if (count < target) {
+            counter.innerText = Math.ceil(count + inc);
+            setTimeout(updateCount, 1);
+        } else {
+            counter.innerText = target;
+        }
+    };
+
+    // Sadece element görünür olduğunda sayacı başlat
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                updateCount();
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+
+    observer.observe(counter);
+});
+
+// Kontrol listesi fonksiyonları
+function updateMainCheckbox(mainCheckbox) {
+    // Alt checkboxları bul
+    const subChecks = mainCheckbox.closest('.form-check')
+        .querySelectorAll('.sub-check');
+    
+    // Ana checkbox işaretlendiğinde tüm alt checkboxları işaretle
+    subChecks.forEach(subCheck => {
+        subCheck.checked = mainCheckbox.checked;
+    });
+    
+    updateProgress();
+}
+
+function updateSubCheckboxes(subCheckbox) {
+    const parentId = subCheckbox.dataset.parent;
+    const mainCheckbox = document.getElementById(parentId);
+    const siblingChecks = mainCheckbox.closest('.form-check')
+        .querySelectorAll('.sub-check');
+    
+    // Tüm alt checkboxlar işaretli mi kontrol et
+    const allChecked = Array.from(siblingChecks)
+        .every(check => check.checked);
+    
+    // Ana checkbox'ı güncelle
+    mainCheckbox.checked = allChecked;
+    mainCheckbox.indeterminate = !allChecked && 
+        Array.from(siblingChecks).some(check => check.checked);
+    
+    updateProgress();
+}
+
+function updateProgress() {
+    const subCheckboxes = document.querySelectorAll('.sub-check');
+    const total = subCheckboxes.length;
+    const checked = Array.from(subCheckboxes)
+        .filter(cb => cb.checked).length;
+    const percentage = Math.round((checked / total) * 100);
+    
+    document.querySelector('.progress-bar').style.width = percentage + '%';
+    document.querySelector('.progress-text').textContent = `${percentage}% Tamamlandı`;
+    
+    // LocalStorage'a kaydet
+    const mainStates = {};
+    document.querySelectorAll('.main-check').forEach(main => {
+        const subStates = Array.from(
+            main.closest('.form-check').querySelectorAll('.sub-check')
+        ).map(sub => sub.checked);
+        mainStates[main.id] = {
+            checked: main.checked,
+            subStates: subStates
+        };
+    });
+    
+    localStorage.setItem('checklistStates', JSON.stringify(mainStates));
+}
+
+function resetChecklist() {
+    document.querySelectorAll('.main-check, .sub-check')
+        .forEach(cb => cb.checked = false);
+    document.querySelectorAll('.main-check')
+        .forEach(cb => cb.indeterminate = false);
+    updateProgress();
+    localStorage.removeItem('checklistStates');
+}
+
+// Sayfa yüklendiğinde kontrol listesini geri yükle
+document.addEventListener('DOMContentLoaded', function() {
+    const savedStates = localStorage.getItem('checklistStates');
+    if (savedStates) {
+        const states = JSON.parse(savedStates);
+        Object.entries(states).forEach(([mainId, state]) => {
+            const mainCheck = document.getElementById(mainId);
+            if (mainCheck) {
+                mainCheck.checked = state.checked;
+                const subChecks = mainCheck.closest('.form-check')
+                    .querySelectorAll('.sub-check');
+                state.subStates.forEach((checked, index) => {
+                    if (subChecks[index]) {
+                        subChecks[index].checked = checked;
+                    }
+                });
+            }
+        });
+        updateProgress();
+    }
+});
+
+// Paylaşım fonksiyonu
+function shareProgress() {
+    const percentage = document.querySelector('.progress-text').textContent;
+    const text = `Deprem hazırlık durumum: ${percentage} tamamlandı! Sen de hazırlıklı ol: [site-linki]`;
+    
+    if (navigator.share) {
+        navigator.share({
+            title: 'Deprem Hazırlık Durumum',
+            text: text,
+            url: window.location.href
+        });
+    } else {
+        // Kopyala butonu göster
+        const tempInput = document.createElement('input');
+        tempInput.value = text;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        
+        alert('Mesaj panoya kopyalandı!');
+    }
+}
+
+// SSS Toggle fonksiyonu
+function toggleFaq(element) {
+    const answer = element.nextElementSibling;
+    const isOpen = element.classList.contains('active');
+    
+    // Tüm açık soruları kapat
+    document.querySelectorAll('.faq-question').forEach(q => {
+        q.classList.remove('active');
+        q.nextElementSibling.classList.remove('show');
+    });
+    
+    // Seçili soruyu aç/kapat
+    if (!isOpen) {
+        element.classList.add('active');
+        answer.classList.add('show');
+    }
+}
+
+// Global değişkenler
+let allSafeZones = [];
+let filteredSafeZones = [];
+
+// Modal açma fonksiyonu
+function openSafeZonesModal() {
+    // Modal'ı göster
+    const modal = new bootstrap.Modal(document.getElementById('safeZonesModal'));
+    modal.show();
+    
+    // İlk yükleme
+    if (allSafeZones.length === 0) {
+        fetchSafeZones();
+    }
+}
+
+// Güvenli bölgeleri getir
+async function fetchSafeZones() {
+    try {
+        console.log('Güvenli bölgeler getiriliyor...');
+        const response = await fetch('/api/safe-zones');
+        console.log('API yanıt durumu:', response.status);
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(`HTTP hata: ${response.status}, Detay: ${errorData.error}`);
+        }
+        
+        allSafeZones = await response.json();
+        console.log('Alınan güvenli bölge sayısı:', allSafeZones.length);
+        
+        // Şehir listesini oluştur
+        updateCityList();
+        
+        // Kartları göster
+        filterAndDisplaySafeZones();
+    } catch (error) {
+        console.error('Güvenli bölgeler yüklenirken detaylı hata:', error);
+        document.getElementById('safeZonesContainer').innerHTML = `
+            <div class="col-12 text-center">
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    Güvenli bölgeler yüklenirken bir hata oluştu: ${error.message}
+                </div>
+            </div>
+        `;
+    }
+}
+
+// Şehir listesini güncelle
+function updateCityList() {
+    const cities = [...new Set(allSafeZones.map(zone => zone.city))].sort();
+    const citySelect = document.getElementById('cityFilter');
+    
+    citySelect.innerHTML = '<option value="">Tüm Şehirler</option>';
+    cities.forEach(city => {
+        citySelect.innerHTML += `<option value="${city}">${city}</option>`;
+    });
+}
+
+// İlçe listesini güncelle
+function updateDistrictList(city) {
+    const districts = [...new Set(
+        allSafeZones
+            .filter(zone => !city || zone.city === city)
+            .map(zone => zone.district)
+    )].sort();
+    
+    const districtSelect = document.getElementById('districtFilter');
+    districtSelect.innerHTML = '<option value="">Tüm İlçeler</option>';
+    districts.forEach(district => {
+        districtSelect.innerHTML += `<option value="${district}">${district}</option>`;
+    });
+}
+
+// Filtreleme ve gösterme
+function filterAndDisplaySafeZones() {
+    const city = document.getElementById('cityFilter').value;
+    const district = document.getElementById('districtFilter').value;
+    
+    filteredSafeZones = allSafeZones.filter(zone => {
+        return (!city || zone.city === city) && 
+               (!district || zone.district === district);
+    });
+    
+    displaySafeZones();
+}
+
+// Güvenli bölgeleri göster
+function displaySafeZones() {
+    const container = document.getElementById('safeZonesContainer');
+    container.innerHTML = '';
+    
+    filteredSafeZones.forEach(zone => {
+        container.innerHTML += `
+            <div class="col-md-6 col-lg-4">
+                <div class="safe-zone-card">
+                    <h5>${zone.name}</h5>
+                    <div class="safe-zone-info">
+                        <i class="fas fa-map-marker-alt"></i>${zone.address}
+                    </div>
+                    <div class="safe-zone-info">
+                        <i class="fas fa-city"></i>${zone.city} / ${zone.district}
+                    </div>
+                    <div class="safe-zone-info">
+                        <i class="fas fa-ruler-combined"></i>${zone.area} m²
+                    </div>
+                    <button class="btn btn-sm btn-primary mt-3" onclick="getDirections(${zone.lat}, ${zone.lng})">
+                        <i class="fas fa-directions me-2"></i>Yol Tarifi
+                    </button>
+                </div>
+            </div>
+        `;
+    });
+}
+
+// Event Listeners
+document.getElementById('cityFilter').addEventListener('change', function(e) {
+    updateDistrictList(e.target.value);
+    filterAndDisplaySafeZones();
+});
+
+document.getElementById('districtFilter').addEventListener('change', filterAndDisplaySafeZones);
+
+// Yol tarifi fonksiyonu
+function getDirections(lat, lng) {
+    window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`);
+}
+</script> 

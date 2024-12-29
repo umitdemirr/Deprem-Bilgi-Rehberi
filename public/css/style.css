@@ -1,0 +1,1736 @@
+:root {
+    /* Light theme variables */
+    --primary: #2c3e50;
+    --secondary: #e74c3c;
+    --background: #ffffff;
+    --text: #333333;
+    --border: #dee2e6;
+    --card-bg: #ffffff;
+    --navbar-bg: #2c3e50;
+}
+
+[data-theme="dark"] {
+    /* Dark theme variables */
+    --primary: #0d6efd;
+    --secondary: #6c757d;
+    --background: #121212;
+    --card-bg: #1e1e1e;
+    --text: #ffffff;
+    --border: #2d2d2d;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    transition: all 0.3s ease;
+}
+
+/* Navbar dark mode styles */
+[data-theme="dark"] .navbar {
+    background-color: var(--navbar-bg) !important;
+}
+
+/* Cards dark mode styles */
+[data-theme="dark"] .card,
+[data-theme="dark"] .info-box {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+}
+
+/* Text colors for dark mode */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+    color: var(--text);
+}
+
+/* Theme toggle button styles */
+#theme-toggle {
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+[data-theme="dark"] #theme-toggle i.fa-sun {
+    color: #f1c40f;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(33, 37, 41, 0.95) !important;
+    transition: transform 0.3s ease-in-out;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1030;
+}
+
+/* Navbar scroll animasyonu için */
+.navbar.scrolled {
+    padding: 0.5rem 0;
+    background-color: rgba(33, 37, 41, 0.98) !important;
+}
+
+.navbar-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-item {
+    margin: 0 15px;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: white !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color) !important;
+}
+
+/* Main Content Padding for Fixed Navbar */
+main {
+    /* padding-top: 80px; - Bu satırı kaldırıyoruz */
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('/images/hero-bg.jpg') center/cover no-repeat;
+    color: white;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease 0.3s;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Featured Info Styles */
+.featured-info {
+    padding: 5rem 0;
+    background: #f8f9fa;
+}
+
+.info-box {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+}
+
+.info-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+/* Recent Earthquakes Section */
+.recent-earthquakes {
+    padding: 5rem 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.earthquake-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.earthquake-card {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.magnitude {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+/* Dark Mode Styles */
+[data-theme="dark"] .featured-info {
+    background: var(--dark-bg);
+}
+
+[data-theme="dark"] .info-box {
+    background: #2d3436;
+}
+
+[data-theme="dark"] .earthquake-card {
+    background: #2d3436;
+}
+
+/* Info Cards */
+.info-card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--navbar-bg);
+    padding: 4rem 0 1rem;
+    margin-top: 4rem;
+    color: #fff;
+}
+
+.footer-section {
+    margin-bottom: 2rem;
+}
+
+.footer-title {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+.footer-title i {
+    margin-right: 0.5rem;
+    color: var(--secondary);
+}
+
+.footer-text {
+    color: rgba(255,255,255,0.9);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    background: var(--secondary);
+    color: #fff;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-links a:hover {
+    color: var(--secondary);
+    transform: translateX(5px);
+}
+
+.emergency-contacts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.emergency-contacts li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: rgba(255,255,255,0.9);
+}
+
+.emergency-contacts a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.emergency-contacts a:hover {
+    color: var(--secondary);
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.copyright {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0;
+    color: rgba(255,255,255,0.7);
+}
+
+.footer-extra-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-end;
+}
+
+.footer-extra-links a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.footer-extra-links a:hover {
+    opacity: 1;
+    color: var(--secondary);
+}
+
+/* Dark mode uyumluluğu */
+[data-theme="dark"] .footer {
+    background-color: var(--navbar-bg);
+}
+
+[data-theme="dark"] .footer-title {
+    border-bottom-color: rgba(255,255,255,0.1);
+}
+
+/* Responsive tasarım */
+@media (max-width: 768px) {
+    .footer {
+        padding: 3rem 0 1rem;
+    }
+    
+    .footer-extra-links {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    .copyright {
+        text-align: center;
+    }
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* Harita ve Filtreleme Stilleri */
+.safe-zones-page #map {
+    height: 100vh;
+    width: 100%;
+}
+
+.safe-zones-page .filter-section {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    max-width: 300px;
+}
+
+.safe-zones-page .filter-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.safe-zones-page .filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.safe-zones-page .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.safe-zones-page .filter-group label {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+.safe-zones-page .filter-select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    width: 100%;
+}
+
+.safe-zones-page .capacity-range {
+    width: 100%;
+}
+
+.safe-zones-page .capacity-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Mobil uyumluluk için */
+@media (max-width: 768px) {
+    .safe-zones-page .filter-section {
+        position: fixed;
+        bottom: 20px;
+        top: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: none;
+    }
+}
+
+/* Dark mode uyumluluğu için */
+[data-theme="dark"] .safe-zones-page .filter-section {
+    background: var(--dark-bg);
+    color: var(--text-light);
+}
+
+[data-theme="dark"] .safe-zones-page .filter-title {
+    color: var(--text-light);
+    border-bottom-color: #444;
+}
+
+[data-theme="dark"] .safe-zones-page .filter-group label {
+    color: #aaa;
+}
+
+[data-theme="dark"] .safe-zones-page .filter-select {
+    background: var(--dark-bg);
+    color: var(--text-light);
+    border-color: #444;
+}
+
+[data-theme="dark"] .safe-zones-page .capacity-labels {
+    color: #aaa;
+}
+
+/* Navbar Stilleri */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1030;
+}
+
+.navbar-brand i {
+    margin-right: 8px;
+}
+
+.navbar-nav .nav-link i {
+    margin-right: 5px;
+}
+
+/* Navbar altındaki boşluk için */
+.navbar-spacer {
+    height: 56px; /* Navbar yüksekliği kadar */
+}
+
+/* Dark mode için navbar stilleri */
+[data-theme="dark"] .navbar {
+    background-color: var(--dark-bg) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Responsive tasarım */
+@media (max-width: 992px) {
+    .navbar-nav {
+        padding: 10px 0;
+    }
+    
+    .navbar-nav .nav-item {
+        padding: 5px 0;
+    }
+}
+
+/* Theme toggle button */
+#theme-toggle {
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+[data-theme="dark"] #theme-toggle i {
+    color: #f1c40f;
+}
+
+/* Recent Earthquakes Dark Mode Styles */
+[data-theme="dark"] .earthquake-card {
+    background: var(--card-bg);
+}
+
+[data-theme="dark"] .earthquake-card .details h4,
+[data-theme="dark"] .earthquake-card .details p {
+    color: var(--text);
+}
+
+[data-theme="dark"] .section-header h2,
+[data-theme="dark"] .section-header p {
+    color: var(--text);
+}
+
+[data-theme="dark"] .recent-earthquakes {
+    background: var(--background);
+}
+
+/* Magnitude renkleri için ek kontrastlık */
+[data-theme="dark"] .magnitude {
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .magnitude.bg-danger {
+    background: #dc3545 !important;
+}
+
+[data-theme="dark"] .magnitude.bg-warning {
+    background: #ffc107 !important;
+    color: #000;
+}
+
+[data-theme="dark"] .magnitude.bg-info {
+    background: #0dcaf0 !important;
+}
+
+[data-theme="dark"] .magnitude.bg-success {
+    background: #198754 !important;
+}
+
+/* Son Depremler Sayfası Dark Mode Stilleri */
+[data-theme="dark"] .earthquake-panel {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .earthquake-panel .panel-heading {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--border);
+}
+
+[data-theme="dark"] .earthquake-panel .panel-title {
+    color: var(--text);
+}
+
+[data-theme="dark"] .earthquake-panel .panel-body {
+    color: var(--text);
+}
+
+[data-theme="dark"] .earthquake-info {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .earthquake-info .info-item {
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .earthquake-info .info-label {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] .earthquake-info .info-value {
+    color: var(--text);
+}
+
+[data-theme="dark"] .filter-panel {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .filter-panel .form-control,
+[data-theme="dark"] .filter-panel .form-select {
+    background-color: var(--navbar-bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+[data-theme="dark"] .filter-panel .form-control:focus,
+[data-theme="dark"] .filter-panel .form-select:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 0.25rem rgba(231, 76, 60, 0.25);
+}
+
+[data-theme="dark"] .filter-panel label {
+    color: var(--text);
+}
+
+[data-theme="dark"] .filter-panel .btn-outline-secondary {
+    color: var(--text);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .filter-panel .btn-outline-secondary:hover {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    color: #fff;
+}
+
+[data-theme="dark"] .magnitude-badge {
+    border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .stats-panel {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .stats-item {
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .stats-label {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] .stats-value {
+    color: var(--text);
+}
+
+/* Magnitude renkleri için ek kontrastlık */
+[data-theme="dark"] .magnitude-high {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+[data-theme="dark"] .magnitude-medium {
+    background-color: #ffc107;
+    color: #000;
+}
+
+[data-theme="dark"] .magnitude-low {
+    background-color: #28a745;
+    color: #fff;
+}
+
+/* Pagination dark mode */
+[data-theme="dark"] .pagination .page-link {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+[data-theme="dark"] .pagination .page-link:hover {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    color: #fff;
+}
+
+[data-theme="dark"] .pagination .active .page-link {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    color: #fff;
+}
+
+/* Panel başlıkları için dark mode stilleri */
+[data-theme="dark"] .card-title,
+[data-theme="dark"] .panel-title,
+[data-theme="dark"] .filter-title,
+[data-theme="dark"] .map-title,
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] .card-header,
+[data-theme="dark"] label {
+    color: var(--text) !important;
+}
+
+/* Panel içerikleri için dark mode stilleri */
+[data-theme="dark"] .card,
+[data-theme="dark"] .panel,
+[data-theme="dark"] .filter-section {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .card-body,
+[data-theme="dark"] .panel-body {
+    color: var(--text);
+}
+
+/* Form elemanları için dark mode stilleri */
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select,
+[data-theme="dark"] .input-group-text {
+    background-color: var(--navbar-bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+    background-color: var(--navbar-bg);
+    border-color: var(--secondary);
+    color: var(--text);
+}
+
+/* Placeholder rengi için dark mode */
+[data-theme="dark"] .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Panel alt çizgileri için dark mode */
+[data-theme="dark"] .card-header,
+[data-theme="dark"] .panel-heading {
+    border-bottom-color: var(--border);
+}
+
+/* Liste elemanları için dark mode */
+[data-theme="dark"] .list-group-item {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+/* Son Depremler Sayfası Stilleri */
+[data-theme="dark"] .earthquakes-page {
+    background-color: var(--background);
+}
+
+[data-theme="dark"] .earthquakes-page .card {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .earthquakes-page .card-header {
+    background-color: var(--navbar-bg);
+    border-bottom-color: var(--border);
+}
+
+[data-theme="dark"] .earthquakes-page .card-body {
+    color: var(--text);
+}
+
+/* Filtre paneli için */
+[data-theme="dark"] .earthquakes-page .filter-card {
+    background-color: var(--card-bg);
+}
+
+[data-theme="dark"] .earthquakes-page .form-label {
+    color: var(--text);
+}
+
+[data-theme="dark"] .earthquakes-page .form-control,
+[data-theme="dark"] .earthquakes-page .form-select {
+    background-color: var(--navbar-bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+/* Deprem listesi için */
+[data-theme="dark"] .earthquakes-page .earthquake-list {
+    background-color: var(--card-bg);
+}
+
+[data-theme="dark"] .earthquakes-page .earthquake-item {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .earthquakes-page .earthquake-item:hover {
+    background-color: var(--navbar-bg);
+}
+
+/* İstatistik kartları için */
+[data-theme="dark"] .earthquakes-page .stats-card {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .earthquakes-page .stats-value {
+    color: var(--text);
+}
+
+[data-theme="dark"] .earthquakes-page .stats-label {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Tablo stilleri için */
+[data-theme="dark"] .earthquakes-page .table {
+    color: var(--text);
+}
+
+[data-theme="dark"] .earthquakes-page .table thead th {
+    background-color: var(--navbar-bg);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .earthquakes-page .table td {
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .earthquakes-page .table tbody tr:hover {
+    background-color: var(--navbar-bg);
+}
+
+/* Sayfalama için */
+[data-theme="dark"] .earthquakes-page .pagination .page-link {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+[data-theme="dark"] .earthquakes-page .pagination .page-link:hover {
+    background-color: var(--navbar-bg);
+}
+
+[data-theme="dark"] .earthquakes-page .pagination .active .page-link {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    color: #fff;
+}
+
+/* Butonlar için */
+[data-theme="dark"] .earthquakes-page .btn-outline-secondary {
+    color: var(--text);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .earthquakes-page .btn-outline-secondary:hover {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    color: #fff;
+}
+
+/* Magnitude badge'leri için */
+[data-theme="dark"] .earthquakes-page .magnitude-badge {
+    border: 1px solid var(--border);
+}
+
+/* Bilgi Köşesi Stilleri */
+.info-page {
+    background-color: var(--background);
+}
+
+.info-hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('/images/info-hero.jpg') center/cover;
+    padding: 4rem 0;
+    color: #fff;
+    margin-bottom: 3rem;
+}
+
+.info-category-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    height: 100%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.info-category-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.info-link {
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-link:hover {
+    background: var(--secondary);
+    color: #fff;
+    padding-left: 1rem;
+}
+
+.info-section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+    display: none;
+    transition: opacity 0.3s ease;
+}
+
+.checklist-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    padding: 0.5rem 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.checklist li:before {
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+}
+
+.resource-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+}
+
+.resource-card i {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+/* Dark mode uyumluluğu */
+[data-theme="dark"] .info-category-card,
+[data-theme="dark"] .checklist-card,
+[data-theme="dark"] .resource-card {
+    background: var(--card-bg);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .info-link:hover {
+    background: var(--secondary);
+}
+
+/* Navbar link styles */
+.navbar .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+}
+
+.navbar .nav-link i {
+    width: 16px;
+    text-align: center;
+}
+
+/* Bilgi Köşesi Stilleri */
+.article-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+.article-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.article-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.default-image {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: white;
+}
+
+.default-image i {
+    font-size: 3rem;
+}
+
+.article-content {
+    padding: 1.5rem;
+}
+
+.article-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.article-content p {
+    color: var(--text);
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Kategori filtreleme butonları */
+.category-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--card-bg);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* Dark mode uyumluluğu */
+[data-theme="dark"] .article-card {
+    background: var(--card-bg);
+}
+
+[data-theme="dark"] .category-btn {
+    background: var(--navbar-bg);
+}
+
+/* Info link aktif durumu için stil */
+.info-link.active {
+    background: var(--secondary);
+    color: #fff;
+    padding-left: 1rem;
+}
+
+/* Smooth transition için info section stilini güncelle */
+.info-section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+    display: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Scroll davranışı için */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mobil görünüm için responsive düzenlemeler */
+@media (max-width: 768px) {
+    .info-category-card {
+        margin-bottom: 2rem;
+    }
+    
+    .info-list {
+        gap: 0.5rem;
+    }
+    
+    .info-link {
+        padding: 0.75rem;
+    }
+}
+
+/* Makale Detay Kartı */
+.article-detail-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+}
+
+.article-title {
+    color: var(--text);
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.article-body {
+    color: var(--text);
+    line-height: 1.8;
+}
+
+/* Kategori Filtre Butonları İyileştirmeleri */
+.category-filters {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.category-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--background);
+    color: var(--text);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.category-btn.active {
+    background: var(--secondary);
+    color: white;
+}
+
+/* Info Link İyileştirmeleri */
+.info-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background: var(--background);
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-bottom: 0.5rem;
+}
+
+.info-link:hover {
+    transform: translateX(5px);
+    background: var(--secondary);
+    color: white;
+}
+
+.info-link i {
+    width: 20px;
+    text-align: center;
+}
+
+/* Loading Animasyonu */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.loading i {
+    font-size: 2rem;
+    color: var(--secondary);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Düzenlemeler */
+@media (max-width: 768px) {
+    .category-filters {
+        flex-direction: column;
+    }
+    
+    .category-btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .article-detail-card {
+        padding: 1rem;
+    }
+}
+
+/* Modal içeriği için stiller */
+.modal-body .info-content {
+    padding: 1rem;
+}
+
+.modal-body .checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-body .checklist li {
+    padding: 0.5rem 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.modal-body .checklist li:before {
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+}
+
+/* Loading animasyonu */
+.loading i {
+    font-size: 2rem;
+    color: var(--secondary);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* PDF liste stilleri */
+.pdf-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.pdf-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pdf-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background: var(--primary);
+    color: #fff;
+}
+
+.pdf-icon {
+    font-size: 2.5rem;
+    color: #dc3545;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.pdf-item:hover .pdf-icon {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.pdf-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.pdf-description {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+.pdf-size {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    background: rgba(0,0,0,0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    margin-top: auto;
+}
+
+/* Dark mode uyumluluğu */
+[data-theme="dark"] .pdf-item {
+    background: var(--card-bg);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .pdf-item:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+[data-theme="dark"] .pdf-size {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Responsive düzenlemeler */
+@media (max-width: 768px) {
+    .pdf-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Video liste stilleri */
+.video-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.video-item h6 {
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.video-item .ratio {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Video Modal Stilleri */
+.video-category-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border);
+    margin-top: 1.5rem;
+}
+
+.video-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.video-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    margin: 0.5rem 0 0 0;
+    text-align: center;
+}
+
+.ratio {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Modal genel stilleri */
+.modal-xl {
+    max-width: 1140px;
+}
+
+.modal-header.bg-primary {
+    background: var(--primary) !important;
+}
+
+.modal-header .modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Dark mode uyumluluğu */
+[data-theme="dark"] .video-card {
+    background: var(--card-bg);
+}
+
+[data-theme="dark"] .video-title {
+    color: var(--text);
+}
+
+/* Responsive düzenlemeler */
+@media (max-width: 768px) {
+    .modal-xl {
+        max-width: 95%;
+        margin: 1rem auto;
+    }
+    
+    .video-category-title {
+        font-size: 1.2rem;
+    }
+    
+    .video-title {
+        font-size: 0.9rem;
+    }
+}
+
+/* Modal dark mode stilleri */
+[data-theme="dark"] .modal-content {
+    background-color: var(--card-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .modal-header {
+    border-bottom: 1px solid var(--border);
+}
+
+[data-theme="dark"] .modal-footer {
+    border-top: 1px solid var(--border);
+}
+
+[data-theme="dark"] .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+[data-theme="dark"] .video-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .video-title {
+    color: var(--text);
+}
+
+[data-theme="dark"] .video-category-title {
+    color: var(--text);
+    border-bottom-color: var(--border);
+}
+
+[data-theme="dark"] .emergency-contacts,
+[data-theme="dark"] .pdf-list {
+    color: var(--text);
+}
+
+[data-theme="dark"] .pdf-item,
+[data-theme="dark"] .contact-item {
+    color: var(--text);
+}
+
+[data-theme="dark"] .pdf-item:hover {
+    background: var(--border);
+}
+
+/* Acil Numaralar Modal Stilleri */
+.emergency-contacts {
+    padding: 1rem;
+}
+
+.contact-category {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.category-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    font-size: 1.2rem;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info h6 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text);
+    opacity: 0.8;
+}
+
+.phone-number {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    display: block;
+    margin-top: 0.2rem;
+}
+
+.phone-number:hover {
+    color: var(--secondary);
+}
+
+/* Dark mode uyumluluğu */
+[data-theme="dark"] .contact-category {
+    background: var(--card-bg);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .contact-item {
+    background: rgba(255,255,255,0.05);
+}
+
+[data-theme="dark"] .category-title {
+    border-bottom-color: var(--border);
+}
+
+/* Responsive düzenlemeler */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-item {
+        padding: 0.8rem;
+    }
+}
+
+/* Hızlı Erişim Kartları */
+.quick-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.quick-card:hover {
+    transform: translateY(-10px);
+}
+
+.quick-card-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.quick-card.emergency .quick-card-icon {
+    background: var(--danger);
+}
+
+.quick-card.location .quick-card-icon {
+    background: var(--success);
+}
+
+/* Son Depremler Listesi */
+.earthquake-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+.earthquake-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+.earthquake-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Bilgi Kategorileri */
+.info-category-box {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+.info-category-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.category-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+} 

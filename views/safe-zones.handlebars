@@ -1,0 +1,111 @@
+<script>
+// Harita stil URL'leri
+const lightStyle = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const darkStyle = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+
+let map, tileLayer, markers;
+
+// Harita başlatma fonksiyonu
+function initMap() {
+    // Mevcut tema kontrolü
+    const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+    const currentStyle = isDarkMode ? darkStyle : lightStyle;
+
+    // Harita oluşturma
+    map = L.map('map').setView([41.0082, 28.9784], 8);
+    
+    // Tile layer ekleme
+    tileLayer = L.tileLayer(currentStyle, {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Marker cluster grubu oluşturma
+    markers = L.markerClusterGroup();
+    
+    // Mevcut markerları ekle
+    safeZones.forEach(zone => {
+        const marker = L.marker([zone.lat, zone.lng])
+            .bindPopup(`
+                <div class="popup-content">
+                    <h5>${zone.name}</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> ${zone.address}</p>
+                    <p><i class="fas fa-ruler-combined"></i> ${zone.area} m²</p>
+                    <button class="btn btn-sm btn-primary" onclick="getDirections(${zone.lat}, ${zone.lng})">
+                        <i class="fas fa-directions"></i> Yol Tarifi
+                    </button>
+                </div>
+            `);
+        markers.addLayer(marker);
+    });
+
+    map.addLayer(markers);
+}
+
+// Tema değişikliğini dinle
+const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        if (mutation.attributeName === 'data-theme') {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (tileLayer) {
+                tileLayer.setUrl(isDark ? darkStyle : lightStyle);
+            }
+        }
+    });
+});
+
+// HTML elementini gözlemle
+observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme']
+});
+
+// Sayfa yüklendiğinde haritayı başlat
+document.addEventListener('DOMContentLoaded', initMap);
+
+// Popup stilleri için CSS
+const style = document.createElement('style');
+style.textContent = `
+    [data-theme="dark"] .leaflet-popup-content-wrapper {
+        background: var(--card-bg);
+        color: var(--text);
+    }
+
+    [data-theme="dark"] .leaflet-popup-tip {
+        background: var(--card-bg);
+    }
+
+    [data-theme="dark"] .popup-content h5 {
+        color: var(--text);
+    }
+
+    [data-theme="dark"] .popup-content p {
+        color: var(--text);
+        opacity: 0.8;
+    }
+
+    [data-theme="dark"] .leaflet-control-zoom a {
+        background: var(--card-bg);
+        color: var(--text);
+        border-color: var(--border);
+    }
+
+    [data-theme="dark"] .leaflet-control-zoom a:hover {
+        background: rgba(255,255,255,0.1);
+    }
+
+    [data-theme="dark"] .leaflet-bar {
+        border-color: var(--border);
+    }
+
+    [data-theme="dark"] .marker-cluster {
+        background: rgba(var(--primary-rgb), 0.6);
+    }
+
+    [data-theme="dark"] .marker-cluster div {
+        background: rgba(var(--primary-rgb), 0.8);
+        color: white;
+    }
+`;
+document.head.appendChild(style);
+</script> 

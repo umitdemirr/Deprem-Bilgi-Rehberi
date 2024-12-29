@@ -1,0 +1,611 @@
+<div class="info-page">
+    <!-- Hero Section -->
+    <div class="info-hero">
+        <div class="container">
+            <h1 class="text-center mb-4">
+                <i class="fas fa-book-reader"></i> Deprem Bilgi Köşesi
+            </h1>
+            <p class="lead text-center">
+                Deprem öncesi, sırası ve sonrasında hayat kurtarabilecek önemli bilgiler
+            </p>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <!-- Ana Kategoriler -->
+        <div class="row g-4">
+            <!-- Deprem Öncesi -->
+            <div class="col-md-4">
+                <div class="info-category-card">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Deprem Öncesi Hazırlık</h3>
+                    <div class="info-list">
+                        <a href="#deprem-cantasi" class="info-link">
+                            <i class="fas fa-backpack"></i> Deprem Çantası Hazırlama
+                        </a>
+                        <a href="#ev-guvenligi" class="info-link">
+                            <i class="fas fa-home"></i> Ev Güvenliği
+                        </a>
+                        <a href="#aile-plani" class="info-link">
+                            <i class="fas fa-users"></i> Aile Afet Planı
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deprem Sırası -->
+            <div class="col-md-4">
+                <div class="info-category-card">
+                    <div class="card-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Deprem Anında Yapılacaklar</h3>
+                    <div class="info-list">
+                        <a href="#hayat-ucgeni" class="info-link">
+                            <i class="fas fa-triangle"></i> Hayat Üçgeni Pozisyonu
+                        </a>
+                        <a href="#guvenli-yerler" class="info-link">
+                            <i class="fas fa-map-marker-alt"></i> Güvenli Yerler
+                        </a>
+                        <a href="#yanlis-davranislar" class="info-link">
+                            <i class="fas fa-times-circle"></i> Yapılmaması Gerekenler
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deprem Sonrası -->
+            <div class="col-md-4">
+                <div class="info-category-card">
+                    <div class="card-icon">
+                        <i class="fas fa-first-aid"></i>
+                    </div>
+                    <h3>Deprem Sonrası</h3>
+                    <div class="info-list">
+                        <a href="#ilk-yardim" class="info-link">
+                            <i class="fas fa-medkit"></i> İlk Yardım
+                        </a>
+                        <a href="#tahliye" class="info-link">
+                            <i class="fas fa-running"></i> Tahliye Prosedürleri
+                        </a>
+                        <a href="#iletisim" class="info-link">
+                            <i class="fas fa-phone"></i> Acil İletişim
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Faydalı Kaynaklar -->
+        <div class="useful-resources mt-5">
+            <h2 class="text-center mb-4">Faydalı Kaynaklar</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="resource-card">
+                        <i class="fas fa-video"></i>
+                        <h4>Eğitim Videoları</h4>
+                        <p>Deprem hazırlığı ve müdahale konusunda eğitici videolar</p>
+                        <a href="#" class="btn btn-outline-primary video-btn">Videoları İzle</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="resource-card">
+                        <i class="fas fa-file-pdf"></i>
+                        <h4>Dökümanlar</h4>
+                        <p>İndirilebilir rehberler ve kontrol listeleri</p>
+                        <a href="#" class="btn btn-outline-primary pdf-btn">Dökümanları İndir</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="resource-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h4>Acil Numaralar</h4>
+                        <p>Önemli telefon numaraları ve iletişim bilgileri</p>
+                        <a href="#" class="btn btn-outline-primary contact-btn">Numaraları Görüntüle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Info link butonları için modal
+    const infoLinks = document.querySelectorAll('.info-link');
+    infoLinks.forEach(link => {
+        link.addEventListener('click', async function(e) {
+            e.preventDefault();
+            const sectionId = this.getAttribute('href').substring(1);
+            showInfoModal(sectionId);
+        });
+    });
+
+    // Video butonu için modal
+    document.querySelector('.video-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        showVideoModal();
+    });
+
+    // PDF butonu için modal
+    document.querySelector('.pdf-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        showPdfModal();
+    });
+
+    // Acil numaralar butonu için modal
+    document.querySelector('.contact-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        showContactModal();
+    });
+});
+
+// Info modal fonksiyonu
+async function showInfoModal(sectionId) {
+    const modalHtml = `
+        <div class="modal fade" id="infoModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="loading text-center">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    if (!document.getElementById('infoModal')) {
+        document.body.insertAdjacentHTML('beforeend', modalHtml);
+    }
+
+    const modal = new bootstrap.Modal(document.getElementById('infoModal'));
+    modal.show();
+
+    try {
+        const response = await fetch(`/api/info-section/${sectionId}`);
+        const data = await response.json();
+
+        if (data.success) {
+            const modalTitle = document.querySelector('#infoModal .modal-title');
+            const modalBody = document.querySelector('#infoModal .modal-body');
+            modalTitle.textContent = data.data.title;
+            modalBody.innerHTML = data.data.content;
+        }
+    } catch (error) {
+        console.error('İçerik yüklenirken hata:', error);
+        document.querySelector('#infoModal .modal-body').innerHTML = `
+            <div class="alert alert-danger">
+                İçerik yüklenirken bir hata oluştu.
+            </div>
+        `;
+    }
+}
+
+// Video modal fonksiyonu - Her video sadece bir kez kullanılacak
+function showVideoModal() {
+    const modalHtml = `
+        <div class="modal fade" id="videoModal">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">
+                            <i class="fas fa-video me-2"></i>
+                            Deprem Eğitim Videoları
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <div class="row g-4">
+                            <!-- Deprem Öncesi Kategori -->
+                            <div class="col-12">
+                                <h4 class="video-category-title mb-3">
+                                    <i class="fas fa-shield-alt text-primary me-2"></i>
+                                    Deprem Öncesi Hazırlık
+                                </h4>
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="video-card">
+                                            <div class="ratio ratio-16x9 mb-2">
+                                                <iframe 
+                                                    src="https://www.youtube.com/embed/K0keerAalYE?si=VJVqaLyfG9djZ3xn" 
+                                                    title="Deprem Öncesi" 
+                                                    frameborder="0" 
+                                                    allowfullscreen>
+                                                </iframe>
+                                            </div>
+                                            <h6 class="video-title">Deprem Çantası Hazırlama</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="video-card">
+                                            <div class="ratio ratio-16x9 mb-2">
+                                                <iframe 
+                                                    src="https://www.youtube.com/embed/brSdfPnN0tg?si=Cg-k6HsKLK80S5SO" 
+                                                    title="Ev Güvenliği" 
+                                                    frameborder="0" 
+                                                    allowfullscreen>
+                                                </iframe>
+                                            </div>
+                                            <h6 class="video-title">Ev İçi Güvenlik Önlemleri</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Deprem Anı Kategori -->
+                            <div class="col-12 mt-4">
+                                <h4 class="video-category-title mb-3">
+                                    <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                                    Deprem Anında Yapılacaklar
+                                </h4>
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="video-card">
+                                            <div class="ratio ratio-16x9 mb-2">
+                                                <iframe 
+                                                    src="https://www.youtube.com/embed/oZeI0X40EEY?si=6I79dd6cMahRwDtH" 
+                                                    title="Deprem Anı" 
+                                                    frameborder="0" 
+                                                    allowfullscreen>
+                                                </iframe>
+                                            </div>
+                                            <h6 class="video-title">Deprem Anında Yapılması Gerekenler</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="video-card">
+                                            <div class="ratio ratio-16x9 mb-2">
+                                                <iframe 
+                                                    src="https://www.youtube.com/embed/WHSpihv-bos?si=y9NFbTOWeEWM63gc" 
+                                                    title="Güvenli Alanlar" 
+                                                    frameborder="0" 
+                                                    allowfullscreen>
+                                                </iframe>
+                                            </div>
+                                            <h6 class="video-title">Güvenli Alanlara Geçiş</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="video-card">
+                                            <div class="ratio ratio-16x9 mb-2">
+                                                <iframe 
+                                                    src="https://www.youtube.com/embed/ujB0xV4uaD0?si=hpReeLoDR9ug5vXt" 
+                                                    title="Deprem Anı" 
+                                                    frameborder="0" 
+                                                    allowfullscreen>
+                                                </iframe>
+                                            </div>
+                                            <h6 class="video-title">Deprem Anında Doğru Davranışlar</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Deprem Sonrası Kategori -->
+                            <div class="col-12 mt-4">
+                                <h4 class="video-category-title mb-3">
+                                    <i class="fas fa-medkit text-danger me-2"></i>
+                                    Deprem Sonrası Yapılacaklar
+                                </h4>
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="video-card">
+                                            <div class="ratio ratio-16x9 mb-2">
+                                                <iframe 
+                                                    src="https://www.youtube.com/embed/dTHLkpkS6MQ?si=XRJCaL_tCkhcVCfc"
+                                                    title="Deprem Sonrası" 
+                                                    frameborder="0" 
+                                                    allowfullscreen>
+                                                </iframe>
+                                            </div>
+                                            <h6 class="video-title">Deprem Sonrası İlk Yardım</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="video-card">
+                                            <div class="ratio ratio-16x9 mb-2">
+                                                <iframe 
+                                                    src="https://www.youtube.com/embed/lYtVQE6dIXQ?si=aKwFNw6M7MpERVdk" 
+                                                    title="Tahliye" 
+                                                    frameborder="0" 
+                                                    allowfullscreen>
+                                                </iframe>
+                                            </div>
+                                            <h6 class="video-title">Tahliye ve Toplanma</h6>
+                                        </div>
+                                    </div>
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="video-card">
+                                            <div class="ratio ratio-16x9 mb-2">
+                                                <iframe 
+                                                    src="https://www.youtube.com/embed/sYKky0L3zgk?si=lNW9YxlJRr6wRJh5"
+                                                    title="Deprem Sonrası" 
+                                                    frameborder="0" 
+                                                    allowfullscreen>
+                                                </iframe>
+                                            </div>
+                                            <h6 class="video-title">Deprem Sonrası İletişim</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="video-card">
+                                            <div class="ratio ratio-16x9 mb-2">
+                                                <iframe 
+                                                    src="https://www.youtube.com/embed/7pRr8XhGRkQ?si=RdqU6rrFdFhybqol"
+                                                    title="Deprem Sonrası" 
+                                                    frameborder="0" 
+                                                    allowfullscreen>
+                                                </iframe>
+                                            </div>
+                                            <h6 class="video-title">Deprem Sonrası Hasar Tespiti</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    const modal = new bootstrap.Modal(document.getElementById('videoModal'));
+    modal.show();
+}
+
+// PDF modal fonksiyonu - Tüm PDF'ler
+function showPdfModal() {
+    const modalHtml = `
+        <div class="modal fade" id="pdfModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">
+                            <i class="fas fa-file-pdf me-2"></i>
+                            İndirilebilir Dökümanlar
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="pdf-list">
+                            <a href="/docs/afad-mudahale-plani.pdf" class="pdf-item" target="_blank">
+                                <i class="fas fa-file-pdf pdf-icon"></i>
+                                <h4 class="pdf-title">AFAD Afet Müdahale Planı</h4>
+                                <p class="pdf-description">Afet durumlarında yapılması gerekenler ve müdahale planı</p>
+                                <span class="pdf-size">2.4 MB</span>
+                            </a>
+                            
+                            <a href="/docs/deprem-rehberi.pdf" class="pdf-item" target="_blank">
+                                <i class="fas fa-file-pdf pdf-icon"></i>
+                                <h4 class="pdf-title">Deprem Rehberi</h4>
+                                <p class="pdf-description">Deprem öncesi, sırası ve sonrasında yapılması gerekenler</p>
+                                <span class="pdf-size">1.8 MB</span>
+                            </a>
+                            
+                            <a href="/docs/ilkyardim-kilavuzu.pdf" class="pdf-item" target="_blank">
+                                <i class="fas fa-file-pdf pdf-icon"></i>
+                                <h4 class="pdf-title">İlk Yardım Kılavuzu</h4>
+                                <p class="pdf-description">Temel ilk yardım bilgileri ve uygulamaları</p>
+                                <span class="pdf-size">3.2 MB</span>
+                            </a>
+                            
+                            <a href="/docs/deprem-canta-listesi.pdf" class="pdf-item" target="_blank">
+                                <i class="fas fa-file-pdf pdf-icon"></i>
+                                <h4 class="pdf-title">Deprem Çantası Listesi</h4>
+                                <p class="pdf-description">Deprem çantasında bulunması gereken malzemeler</p>
+                                <span class="pdf-size">1.1 MB</span>
+                            </a>
+
+                            <a href="/docs/ev-guvenligi.pdf" class="pdf-item" target="_blank">
+                                <i class="fas fa-file-pdf pdf-icon"></i>
+                                <h4 class="pdf-title">Ev Güvenliği Rehberi</h4>
+                                <p class="pdf-description">Ev içi güvenlik önlemleri ve kontrol listesi</p>
+                                <span class="pdf-size">1.5 MB</span>
+                            </a>
+
+                            <a href="/docs/tahliye-plani.pdf" class="pdf-item" target="_blank">
+                                <i class="fas fa-file-pdf pdf-icon"></i>
+                                <h4 class="pdf-title">Tahliye Planı Hazırlama</h4>
+                                <p class="pdf-description">Acil durum tahliye planı oluşturma kılavuzu</p>
+                                <span class="pdf-size">1.7 MB</span>
+                            </a>
+
+                            <a href="/docs/cocuklar-icin-deprem.pdf" class="pdf-item" target="_blank">
+                                <i class="fas fa-file-pdf pdf-icon"></i>
+                                <h4 class="pdf-title">Çocuklar İçin Deprem Eğitimi</h4>
+                                <p class="pdf-description">Çocuklara yönelik deprem bilgilendirme rehberi</p>
+                                <span class="pdf-size">2.1 MB</span>
+                            </a>
+
+                            <a href="/docs/yapisal-onlemler.pdf" class="pdf-item" target="_blank">
+                                <i class="fas fa-file-pdf pdf-icon"></i>
+                                <h4 class="pdf-title">Yapısal Güvenlik Önlemleri</h4>
+                                <p class="pdf-description">Bina güçlendirme ve yapısal önlemler kılavuzu</p>
+                                <span class="pdf-size">2.8 MB</span>
+                            </a>
+
+                            <a href="/docs/artci-depremler.pdf" class="pdf-item" target="_blank">
+                                <i class="fas fa-file-pdf pdf-icon"></i>
+                                <h4 class="pdf-title">Artçı Deprem Rehberi</h4>
+                                <p class="pdf-description">Artçı depremlere karşı alınacak önlemler</p>
+                                <span class="pdf-size">1.3 MB</span>
+                            </a>
+
+                            <a href="/docs/psikolojik-destek.pdf" class="pdf-item" target="_blank">
+                                <i class="fas fa-file-pdf pdf-icon"></i>
+                                <h4 class="pdf-title">Psikolojik İlk Yardım</h4>
+                                <p class="pdf-description">Deprem sonrası psikolojik destek rehberi</p>
+                                <span class="pdf-size">1.9 MB</span>
+                            </a>
+
+                            <a href="/docs/iletisim-plani.pdf" class="pdf-item" target="_blank">
+                                <i class="fas fa-file-pdf pdf-icon"></i>
+                                <h4 class="pdf-title">Acil Durum İletişim Planı</h4>
+                                <p class="pdf-description">Afet durumunda iletişim yöntemleri</p>
+                                <span class="pdf-size">1.2 MB</span>
+                            </a>
+
+                            <a href="/docs/toplanma-alanlari.pdf" class="pdf-item" target="_blank">
+                                <i class="fas fa-file-pdf pdf-icon"></i>
+                                <h4 class="pdf-title">Toplanma Alanları Rehberi</h4>
+                                <p class="pdf-description">Toplanma alanları ve güvenli bölgeler</p>
+                                <span class="pdf-size">1.6 MB</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    const modal = new bootstrap.Modal(document.getElementById('pdfModal'));
+    modal.show();
+}
+
+// Acil numaralar modal fonksiyonu - Geliştirilmiş tasarım
+function showContactModal() {
+    const modalHtml = `
+        <div class="modal fade" id="contactModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title">
+                            <i class="fas fa-phone-alt me-2"></i>
+                            Acil Durum İletişim Numaraları
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="emergency-contacts">
+                            <!-- Acil Yardım Kategorisi -->
+                            <div class="contact-category mb-4">
+                                <h4 class="category-title text-danger mb-3">
+                                    <i class="fas fa-ambulance me-2"></i>
+                                    Acil Yardım Hatları
+                                </h4>
+                                <div class="contact-grid">
+                                    <div class="contact-item">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-phone-volume"></i>
+                                        </div>
+                                        <div class="contact-info">
+                                            <h6>Acil Çağrı Merkezi</h6>
+                                            <a href="tel:112" class="phone-number">112</a>
+                                        </div>
+                                    </div>
+                                    <div class="contact-item">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-fire-extinguisher"></i>
+                                        </div>
+                                        <div class="contact-info">
+                                            <h6>İtfaiye</h6>
+                                            <a href="tel:110" class="phone-number">110</a>
+                                        </div>
+                                    </div>
+                                    <div class="contact-item">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-hospital"></i>
+                                        </div>
+                                        <div class="contact-info">
+                                            <h6>Sağlık Danışma</h6>
+                                            <a href="tel:184" class="phone-number">184</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Güvenlik Kategorisi -->
+                            <div class="contact-category mb-4">
+                                <h4 class="category-title text-primary mb-3">
+                                    <i class="fas fa-shield-alt me-2"></i>
+                                    Güvenlik Birimleri
+                                </h4>
+                                <div class="contact-grid">
+                                    <div class="contact-item">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-user-shield"></i>
+                                        </div>
+                                        <div class="contact-info">
+                                            <h6>Polis İmdat</h6>
+                                            <a href="tel:155" class="phone-number">155</a>
+                                        </div>
+                                    </div>
+                                    <div class="contact-item">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-hands-helping"></i>
+                                        </div>
+                                        <div class="contact-info">
+                                            <h6>Jandarma</h6>
+                                            <a href="tel:156" class="phone-number">156</a>
+                                        </div>
+                                    </div>
+                                    <div class="contact-item">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-life-ring"></i>
+                                        </div>
+                                        <div class="contact-info">
+                                            <h6>Sahil Güvenlik</h6>
+                                            <a href="tel:158" class="phone-number">158</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AFAD ve Diğer Kurumlar -->
+                            <div class="contact-category">
+                                <h4 class="category-title text-success mb-3">
+                                    <i class="fas fa-building me-2"></i>
+                                    Yardım Kuruluşları
+                                </h4>
+                                <div class="contact-grid">
+                                    <div class="contact-item">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-hand-holding-heart"></i>
+                                        </div>
+                                        <div class="contact-info">
+                                            <h6>AFAD</h6>
+                                            <a href="tel:122" class="phone-number">122</a>
+                                        </div>
+                                    </div>
+                                    <div class="contact-item">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-first-aid"></i>
+                                        </div>
+                                        <div class="contact-info">
+                                            <h6>Kızılay</h6>
+                                            <a href="tel:168" class="phone-number">168</a>
+                                        </div>
+                                    </div>
+                                    <div class="contact-item">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-city"></i>
+                                        </div>
+                                        <div class="contact-info">
+                                            <h6>Belediye</h6>
+                                            <a href="tel:153" class="phone-number">153</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    const modal = new bootstrap.Modal(document.getElementById('contactModal'));
+    modal.show();
+}
+</script> 

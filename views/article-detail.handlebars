@@ -1,0 +1,50 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Ana Sayfa</a></li>
+                    <li class="breadcrumb-item"><a href="/bilgi-kosesi">Bilgi Köşesi</a></li>
+                    <li class="breadcrumb-item active">{{article.title}}</li>
+                </ol>
+            </nav>
+
+            <article class="card">
+                {{#if article.imageUrl}}
+                <img src="{{article.imageUrl}}" class="card-img-top" alt="{{article.title}}">
+                {{/if}}
+                <div class="card-body">
+                    <h1 class="card-title">{{article.title}}</h1>
+                    <div class="mb-3">
+                        <small class="text-muted">
+                            <i class="fas fa-user"></i> {{article.author}} |
+                            <i class="fas fa-calendar"></i> {{formatDate article.createdAt}} |
+                            <i class="fas fa-folder"></i> {{article.category}}
+                        </small>
+                    </div>
+                    <div class="card-text article-content">
+                        {{{article.content}}}
+                    </div>
+                    <div class="mt-4">
+                        {{#each article.tags}}
+                        <span class="badge bg-secondary me-1">{{this}}</span>
+                        {{/each}}
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+<style>
+.article-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.article-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+}
+</style> 
