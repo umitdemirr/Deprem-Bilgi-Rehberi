@@ -20,6 +20,7 @@ const earthquakeService = {
         }
     },
 
+    // Kandilli verilerini parse eden fonksiyon
     parseKandilliData(data) {
         const lines = data.split('\n');
         const earthquakes = [];
@@ -52,6 +53,7 @@ const earthquakeService = {
         return earthquakes;
     },
 
+    // Veritabanına kaydetme fonksiyonu
     async saveEarthquakes(earthquakes) {
         for (const eq of earthquakes) {
             try {

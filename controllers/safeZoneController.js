@@ -1,5 +1,4 @@
 const SafeZone = require('../models/SafeZone');
-const safeZoneService = require('../services/safeZoneService');
 
 const safeZoneController = {
     getSafeZones: async (req, res) => {
