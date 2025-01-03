@@ -64,4 +64,6 @@ safeZoneSchema.index({ city: 1 }); // Performans için normal index
 safeZoneSchema.index({ district: 1 }); // Performans için normal index
 
 // Model caching pattern
-module.exports = mongoose.models.Safe_Zone || mongoose.model('Safe_Zone', safeZoneSchema); 
+const SafeZone = mongoose.model('Safe_Zone', safeZoneSchema);
+
+module.exports = SafeZone; 

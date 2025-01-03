@@ -34,9 +34,6 @@ router.get('/bilgi-kosesi', (req, res, next) => {
     next();
 }, infoController.getInfo);
 
-// Bilgi Köşesi detay sayfası
-router.get('/bilgi-kosesi/:id', infoController.getArticleDetail);
-
 // API endpoints
 router.get('/api/districts/:city', safeZoneController.getDistrictsByCity);
 

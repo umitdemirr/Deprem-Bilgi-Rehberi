@@ -27,34 +27,6 @@ const infoController = {
         }
     },
 
-    getArticleDetail: async (req, res) => {
-        try {
-            const article = await InfoArticle.findById(req.params.id);
-            if (!article) {
-                return res.status(404).render('error', {
-                    message: 'Makale bulunamadı'
-                });
-            }
-
-            // İlgili makaleleri getir
-            const relatedArticles = await InfoArticle.find({
-                category: article.category,
-                _id: { $ne: article._id }
-            }).limit(3);
-
-            res.render('article-detail', {
-                pageTitle: article.title,
-                article,
-                relatedArticles
-            });
-        } catch (error) {
-            console.error('Makale detayı yüklenirken hata:', error);
-            res.status(500).render('error', {
-                message: 'Bir hata oluştu'
-            });
-        }
-    },
-
     getInfoSection: async (req, res) => {
         try {
             const sectionId = req.params.sectionId;

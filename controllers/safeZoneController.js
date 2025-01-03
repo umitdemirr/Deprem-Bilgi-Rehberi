@@ -94,6 +94,7 @@ const safeZoneController = {
         }
     },
 
+    // İlçeleri şehirlere göre getir
     getDistrictsByCity: async (req, res) => {
         try {
             const { city } = req.params;
@@ -128,6 +129,7 @@ const safeZoneController = {
         }
     },
 
+    // Verileri güncelleme
     updateSafeZones: async (req, res) => {
         try {
             await safeZoneService.fetchAllSafeZones();
